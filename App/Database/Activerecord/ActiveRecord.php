@@ -1,7 +1,10 @@
 <?php 
 namespace App\Database\Activerecord;
 
-abstract class ActiveRecord{
+use App\Database\Interface\ActiveRecordInterface;
+use App\Database\Interface\UpdateInterface;
+
+abstract class ActiveRecord implements ActiveRecordInterface{
 
     protected $table = null;
     protected $attributes = [];
@@ -33,6 +36,10 @@ abstract class ActiveRecord{
     }// __get
     
 
+    public function update(UpdateInterface $updateInterface)
+    {
+        return $updateInterface->update();
+    }
+
 }// ActiveRecord
 
-?>
